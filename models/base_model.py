@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""BaseModel that defines all common attributes/methods for other classes"""
 import uuid
 from datetime import datetime
 
-"""BaseModel that defines all common attributes/methods for other classes"""
 
 class BaseModel():
     """class defines all common attributes/methods for other classes"""
@@ -25,9 +25,7 @@ class BaseModel():
                     setattr(self, i, j)
 
     def __str__(self):
-        """
-        magic method
-        """
+        """magic method"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
                                      self.__dict__)
 
