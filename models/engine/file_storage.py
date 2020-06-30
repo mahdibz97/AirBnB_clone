@@ -2,9 +2,10 @@
 """ Class file storage """
 import json
 from os import path
+from models.base_model import BaseModel
 
 
-class FileStorage:
+class FileStorage():
     """ serializes / deserializes an instances:
      file path :: JSON file path (string)
      objects :: store all objects (dictionary) """
@@ -17,17 +18,24 @@ class FileStorage:
 
     def new(self, obj):
         """ sets in __objects the obj with key <obj class name>.id """
-        if obj:
-            key = obj["__class__"] + '.' + obj["id"]
-            setattr(self.__objects, key, self.obj)
+        self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
 
     def save(self):
         """ serializes __objects to the JSON file (path: __file_path) """
+        new = {}
+        for i in self.all():
+            new[i] = self.all()[i].to_dict()
         with open(self.__file_path, mode='w') as file:
-            file.write(json.dumps(self.__objects))
+            file.write(json.dumps(new))
 
     def reload(self):
         """  deserializes the JSON file to __objects """
-        if path.exists(__file_path):
+        try:
             with open(self.__file_path) as file:
-                self.__objects = json.load(file)
+                data = json.load(file)
+                for i, j in data.items():
+                    k = i.split(".")[0]
+                    obj = eval(k)(**j)
+                    self.new(obj)
+        except Exception:
+            pass
