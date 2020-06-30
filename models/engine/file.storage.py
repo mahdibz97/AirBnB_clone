@@ -19,7 +19,7 @@ class FileStorage:
         """ sets in __objects the obj with key <obj class name>.id """
         if obj:
             key = obj["__class__"] + '.' + obj["id"]
-            setattr(self.__objects, key, obj)
+            setattr(self.__objects, key, self.obj)
 
     def save(self):
         """ serializes __objects to the JSON file (path: __file_path) """
