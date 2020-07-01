@@ -14,19 +14,17 @@ class BaseModel():
         created_at : when an instance is created
         updated_at : when the last modification of an instance
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
         if kwargs:
-            for i, j in kwargs.items():
-                if i == "created_at" or i == "updated_at":
-                    self.__dict__[i] = datetime.strptime(
-                        j, "%Y-%m-%dT%H:%M:%S.%f")
-                elif i == '__class__':
-                    self.__class__.__name__ = j
-                else:
-                    setattr(self, i, j)
+            for key, value in kwargs.items():
+                if key in ('created_at', 'updated_at'):
+                    setattr(self, key, datetime.strptime(value,
+                            "%Y-%m-%dT%H:%M:%S.%f"))
+                elif not key == '__class__':
+                    setattr(self, key, value)
         else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def __str__(self):
