@@ -40,7 +40,7 @@ class BaseModel():
     def to_dict(self):
         """ returns a dictionary of the instance"""
         d = self.__dict__
-        d.update(__class__=self.__class__.__name__)
-        d.update(created_at=self.created_at.isoformat())
-        d.update(updated_at=self.updated_at.isoformat())
+        d["__class__"] = self.__class__.__name__
+        d["created_at"] = d["created_at"].isoformat()
+        d["updated_at"] = d["updated_at"].isoformat()
         return d
