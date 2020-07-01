@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """ Console Implementation """
 from cmd import Cmd
+import sys
+from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(Cmd):
