@@ -1,4 +1,4 @@
-# Welcome to the AirBnB clone project! (The Holberton B&B)
+# Welcome to the AirBnB clone project!
 
 The Airbnb clone project for which we are creating a copy of the [Airbnb](https://www.airbnb.com/).
 
