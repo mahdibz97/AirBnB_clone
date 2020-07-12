@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .places article {
     width: 390px;
     padding: 20px;
