@@ -19,23 +19,28 @@ button {
 	margin-right:30px;
 	margin-left: auto;
 }
+
 button:hover {
     opacity: 0.9;
 }
+
 .amenities {
     height: 100%;
     width: 25%;
 }
+
 .locations{
     height: 100%;
     width: 25%;
     border-right: 1px solid #DDDDDD;
 }
+
 .container h3{
     font-weight: 600;
     color: black;
     padding-left: 50px;
 }
+
 .container h4{
     font-weight: 400;
     font-size: 14px;
